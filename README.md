@@ -90,20 +90,20 @@ Durante a construção dos cenários foram utilizadas técnicas como:
 banco-web-tests-manuais/
 │
 ├── login/
-│   ├── analise.md
+│   ├── analise-login.md
 │   ├── login.feature
 │   ├── login-caso-de-teste.md
 │   ├── relatorio-sessao-login.md
 │   └── evidencias/
 │
 ├── realizar-transferencia/
-│   ├── analise.md
+│   ├── analise-realizar-transferencia.md
 │   ├── realizar-transferencia.feature
 │   ├── relatorio-sessao-realizar-transferencia.md
 │   └── evidencias/
 │
 ├── buscar-transferencia/
-│   ├── analise.md
+│   ├── analise-buscar-transferencia.md
 │   ├── buscar-transferencia.feature
 │   ├── relatorio-sessao-buscar-transferencia.md
 │   └── evidencias/
