@@ -1,0 +1,157 @@
+# language: pt
+@transferencia
+Funcionalidade: Realizar transferência
+
+  Contexto:
+    Dado que o usuário tenha realizado login com sucesso
+    E esteja na página de transferência
+
+  @positivo
+  Esquema do Cenário: CT001 - Realizar transferência com valores válidos
+    Quando informar o valor "<valor>"
+    E selecionar uma conta origem ativa com saldo suficiente
+    E selecionar uma conta destino ativa
+    E solicitar a transferência
+    Então o sistema deve realizar a transferência com sucesso
+    E o saldo da conta origem deve ser atualizado
+    E o saldo da conta destino deve ser atualizado
+
+    Exemplos:
+      | valor   |
+      |   10,00 |
+      |   10,01 |
+      | 4999,99 |
+      | 5000,00 |
+
+  @negativo
+  Esquema do Cenário: CT002 - Exibir erro ao informar valor abaixo do mínimo permitido
+    Quando informar o valor "<valor>"
+    E selecionar uma conta origem ativa com saldo suficiente
+    E selecionar uma conta destino ativa
+    E solicitar a transferência
+    Então o sistema deve exibir erro de valor mínimo
+
+    Exemplos:
+      | valor |
+      |    -1 |
+      |     0 |
+      |  9,99 |
+
+  @negativo
+  Esquema do Cenário: CT003 - Exibir erro ao informar valor inválido
+    Quando informar o valor "<valor>"
+    E selecionar uma conta origem ativa com saldo suficiente
+    E selecionar uma conta destino ativa
+    E solicitar a transferência
+    Então o sistema deve exibir erro de valor inválido
+
+    Exemplos:
+      | valor |
+      | abc   |
+      | @#!   |
+      |       |
+
+  @positivo
+  Esquema do Cenário: CT004 - Realizar transferência acima de 5000 com token válido
+    Quando informar o valor "<valor>"
+    E informar o token "123456"
+    E selecionar uma conta origem ativa com saldo suficiente
+    E selecionar uma conta destino ativa
+    E solicitar a transferência
+    Então o sistema deve realizar a transferência com sucesso
+
+    Exemplos:
+      | valor   |
+      | 5000,01 |
+      | 7000,00 |
+
+  @negativo
+  Esquema do Cenário: CT005 - Exibir erro ao realizar transferência acima de 5000 sem token
+    Quando informar o valor "<valor>"
+    E não informar token
+    E selecionar uma conta origem ativa com saldo suficiente
+    E selecionar uma conta destino ativa
+    E solicitar a transferência
+    Então o sistema deve exibir erro de token obrigatório
+
+    Exemplos:
+      | valor   |
+      | 5000,01 |
+      | 7000,00 |
+
+  @negativo
+  Esquema do Cenário: CT006 - Exibir erro ao informar token inválido
+    Quando informar o valor "<valor>"
+    E informar o token "<token>"
+    E selecionar uma conta origem ativa com saldo suficiente
+    E selecionar uma conta destino ativa
+    E solicitar a transferência
+    Então o sistema deve exibir erro de token inválido
+
+    Exemplos:
+      | valor   | token |
+      | 5000,01 | abc   |
+      | 7000,00 |   999 |
+
+  @negativo
+  Esquema do Cenário: CT007 - Exibir erro ao realizar transferência com conta origem inativa
+    Quando informar o valor "<valor>"
+    E selecionar uma conta origem inativa
+    E selecionar uma conta destino ativa
+    E solicitar a transferência
+    Então o sistema deve exibir erro de conta origem inativa
+
+    Exemplos:
+      | valor   |
+      |   10,00 |
+      | 5000,01 |
+
+  @negativo
+  Esquema do Cenário: CT008 - Exibir erro ao realizar transferência com saldo insuficiente
+    Quando informar o valor "<valor>"
+    E selecionar uma conta origem ativa sem saldo suficiente
+    E selecionar uma conta destino ativa
+    E solicitar a transferência
+    Então o sistema deve exibir erro de saldo insuficiente
+
+    Exemplos:
+      | valor   |
+      |   10,00 |
+      | 5000,01 |
+
+  @negativo
+  Esquema do Cenário: CT009 - Exibir erro ao realizar transferência para conta destino inativa
+    Quando informar o valor "<valor>"
+    E selecionar uma conta origem ativa com saldo suficiente
+    E selecionar uma conta destino inativa
+    E solicitar a transferência
+    Então o sistema deve exibir erro de conta destino inativa
+
+    Exemplos:
+      | valor   |
+      |   10,00 |
+      | 5000,01 |
+
+  @negativo
+  Cenário: CT010 - Exibir erro ao não informar valor da transferência
+    Quando não informar o valor da transferência
+    E selecionar uma conta origem ativa com saldo suficiente
+    E selecionar uma conta destino ativa
+    E solicitar a transferência
+    Então o sistema deve exibir mensagem de campo obrigatório
+
+  @negativo
+  Cenário: CT011 - Exibir erro ao não selecionar conta origem
+    Quando informar o valor "100,00"
+    E não selecionar conta origem
+    E selecionar uma conta destino ativa
+    E solicitar a transferência
+    Então o sistema deve exibir mensagem de campo obrigatório
+
+  @negativo
+  Cenário: CT012 - Exibir erro ao não selecionar conta destino
+    Quando informar o valor "100,00"
+    E selecionar uma conta origem ativa com saldo suficiente
+    E não selecionar conta destino
+    E solicitar a transferência
+    Então o sistema deve exibir mensagem de campo obrigatório

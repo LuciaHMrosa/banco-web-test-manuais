@@ -1,0 +1,46 @@
+# language: pt
+
+@buscar-transferencias
+Funcionalidade: Buscar transferências
+
+  Contexto:
+    Dado que o usuário tenha realizado login com sucesso
+    E esteja na página de transferências
+
+  @positivo
+  Cenário: CT001 - Exibir transferências realizadas
+    Então o sistema deve exibir as transferências cadastradas
+
+  @positivo
+  Cenário: CT002 - Navegar para próxima página da listagem
+    Quando acessar a próxima página de transferências
+    Então o sistema deve exibir os próximos registros
+
+  @positivo
+  Cenário: CT003 - Navegar para página anterior da listagem
+    Quando acessar a página anterior de transferências
+    Então o sistema deve exibir os registros anteriores
+
+  @positivo
+  Cenário: CT004 - Validar limite de itens por página
+    Então o sistema deve respeitar o limite de itens configurado por página
+
+  @positivo
+  Cenário: CT005 - Consultar todas as transferências realizadas
+    Quando navegar por todas as páginas da listagem
+    Então o sistema deve exibir todas as transferências cadastradas
+
+  @negativo
+  Cenário: CT006 - Exibir mensagem quando não existirem transferências
+    Dado que não existam transferências cadastradas
+    Então o sistema deve exibir mensagem de nenhuma transferência encontrada
+
+  @negativo
+  Cenário: CT007 - Validar consistência após atualização da página
+    Quando atualizar a página da listagem de transferências
+    Então o sistema deve manter consistência das informações exibidas
+
+  @negativo
+  Cenário: CT008 - Validar comportamento da interface em resolução menor
+    Quando acessar a listagem em resolução reduzida
+    Então a interface deve permanecer utilizável
