@@ -1,86 +1,98 @@
 # 🧪 banco-web-tests-manuais
 
-Projeto voltado para estudos e práticas de Qualidade de Software (QA), utilizando a aplicação Banco Web desenvolvida pelo professor Júlio de Lima durante a Mentoria 2.0.
+Projeto de estudos e prática em Qualidade de Software (QA), utilizando a aplicação Banco Web desenvolvida pelo professor Júlio de Lima na Mentoria 2.0.
 
-Repositório original da aplicação:
-
-* Banco Web: https://github.com/juliodelimas/banco-web
+🔗 Aplicação base:
+https://github.com/juliodelimas/banco-web
 
 ---
 
 # 🎯 Objetivo
 
-Este repositório foi criado com o objetivo de praticar diferentes abordagens de testes manuais aplicadas à aplicação Banco Web, simulando atividades executadas por profissionais de QA em ambientes reais.
+Este repositório tem como objetivo simular um ambiente real de trabalho de QA, aplicando técnicas de testes manuais em uma aplicação web bancária.
 
-O projeto contempla:
+O projeto contempla todo o ciclo de testes:
 
-* Análise de funcionalidades
-* Levantamento de regras de negócio
-* Escrita de cenários BDD com Gherkin
-* Escrita de casos de teste seguindo ISO 29119-3
-* Aplicação de técnicas de design de testes
-* Tabelas de decisão
-* Análise de Valor Limite (AVL)
-* Particionamento de Equivalência (PE)
-* Testes exploratórios
-* Documentação de sessões exploratórias
-* Organização de evidências de testes
+- Análise de funcionalidades
+- Levantamento de regras de negócio
+- Escrita de cenários BDD (Gherkin)
+- Casos de teste baseados na ISO 29119-3 (Login)
+- Execução de testes manuais
+- Registro de evidências
+- Testes exploratórios (Session-Based Testing)
+- Identificação e documentação de defeitos (bugs)
+- Aplicação de técnicas de design de testes
 
 ---
 
-# 📚 Funcionalidades Cobertas
+# 📚 Funcionalidades Testadas
 
 ## 🔐 Login
 
-Cobertura da funcionalidade de autenticação:
+Cobertura da autenticação de usuários:
 
-* Cenários positivos e negativos
-* Campos obrigatórios
-* Credenciais inválidas
-* Fluxo de autenticação
-* Testes exploratórios de comportamento
-* Casos de teste documentados seguindo ISO 29119-3
+- Cenários positivos e negativos
+- Validação de credenciais
+- Campos obrigatórios
+- Fluxo de autenticação
+- Casos de teste estruturados (ISO 29119-3)
+- Testes exploratórios
+- Registro de defeitos encontrados
 
 ---
 
 ## 💸 Realizar Transferência
 
-Cobertura das regras de negócio relacionadas às transferências:
+Cobertura da funcionalidade de transferência bancária:
 
-* Valor mínimo permitido
-* Token obrigatório
-* Validação de token
-* Saldo suficiente
-* Contas ativas
-* Fluxos positivos e negativos
-* Testes exploratórios
+- Validação de valor mínimo (R$10,00)
+- Regra de token acima de R$5.000,00
+- Validação de contas ativas
+- Validação de saldo suficiente
+- Fluxos positivos e negativos
+- Testes exploratórios
+- Registro de bugs funcionais e de validação
 
 ---
 
 ## 📄 Buscar Transferências
 
-Cobertura da funcionalidade de listagem e paginação:
+Cobertura da listagem de transferências:
 
-* Exibição de transferências
-* Navegação entre páginas
-* Paginação
-* Responsividade
-* Consistência visual
-* Testes exploratórios
+- Exibição de registros
+- Paginação (próxima/anterior página)
+- Limite de itens por página
+- Consistência de dados
+- Responsividade da interface
+- Testes exploratórios de UI/UX
 
 ---
 
 # 🧠 Técnicas de Teste Aplicadas
 
-Durante a construção dos cenários foram utilizadas técnicas como:
+- BDD (Behavior Driven Development)
+- Gherkin
+- Particionamento de Equivalência (PE)
+- Análise de Valor Limite (AVL)
+- Tabela de Decisão
+- Testes Exploratórios
+- Session-Based Test Management (SBTM)
+- ISO/IEC/IEEE 29119-3 (casos de teste estruturados)
 
-* BDD (Behavior Driven Development)
-* Gherkin
-* Tabela de Decisão
-* Particionamento de Equivalência (PE)
-* Análise de Valor Limite (AVL)
-* Testes Exploratórios
-* Session-Based Test Management (SBTM)
+---
+
+# 🐞 Defeitos Documentados
+
+Durante os testes foram identificados e registrados defeitos como por exemplo:
+
+- Validação incorreta de regra de token (limite de R$5.000,00)
+- Falta de limite em campos de valor e token
+- Problemas de atualização de saldo em tempo real
+- Permissão de transferência para mesma conta
+- Inconsistências visuais em responsividade
+- Comportamento inesperado em paginação
+
+Todos os defeitos estão documentados na pasta `/defeitos` com evidências em `/evidencias`.
 
 ---
 
@@ -93,25 +105,32 @@ banco-web-tests-manuais/
 │   ├── analise-login.md
 │   ├── login.feature
 │   ├── login-caso-de-teste.md
+│   ├── execucao-testes-login.md
 │   ├── relatorio-sessao-login.md
+│   ├── defeitos/
 │   └── evidencias/
 │
 ├── realizar-transferencia/
 │   ├── analise-realizar-transferencia.md
 │   ├── realizar-transferencia.feature
+│   ├── execucao-testes-realizar-transferencia.md
 │   ├── relatorio-sessao-realizar-transferencia.md
+│   ├── defeitos/
 │   └── evidencias/
 │
 ├── buscar-transferencia/
 │   ├── analise-buscar-transferencia.md
 │   ├── buscar-transferencia.feature
+│   ├── execucao-testes-buscar-transferencia.md
 │   ├── relatorio-sessao-buscar-transferencia.md
+│   ├── defeitos/
 │   └── evidencias/
 │
 ├── README.md
+
+
 ```
 
----
 
 # 🥒 BDD / Gherkin
 

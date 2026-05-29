@@ -105,8 +105,7 @@ Validar o comportamento da funcionalidade de consulta de transferências, garant
 | CT002         | Sim                       | Próxima página        | Exibir próximos registros                |
 | CT003         | Sim                       | Página anterior       | Exibir registros anteriores              |
 | CT004         | Sim                       | Última página         | Exibir registros restantes               |
-| CT005         | Sim                       | Todas as páginas      | Exibir todas as transferências           |
-| CT006         | Não                       | Primeira página       | Exibir mensagem de nenhuma transferência |
-| CT007         | Sim                       | Atualização da página | Manter consistência da listagem          |
-| CT008         | Sim                       | Resolução menor       | Interface permanece utilizável           |
+| CT005         | Não                       | Primeira página       | Exibir mensagem de nenhuma transferência |
+| CT006         | Sim                       | Atualização da página | Manter consistência da listagem          |
+| 
 
